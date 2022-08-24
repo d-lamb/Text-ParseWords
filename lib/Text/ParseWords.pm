@@ -18,7 +18,7 @@ sub shellwords {
     my @allwords;
 
     foreach my $line (@lines) {
-	$line =~ s/^\s+//;
+	$line =~ s/^\s+// if defined($line);
 	my @words = parse_line('\s+', 0, $line);
 	pop @words if (@words and !defined $words[-1]);
 	return() unless (@words || !length($line));
